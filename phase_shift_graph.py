@@ -35,8 +35,8 @@ audio_result_4= audio_original + audio_fase_modificada_4
 
 plt.figure(figsize=(10, 4))
 plt.plot(t, audio_original, label='Seno original')
-plt.plot(t, audio_fase_modificada_2, label='Seno con cambio de fase')
-plt.plot(t, audio_result_2, label='Seno resultante')
+plt.plot(t, audio_fase_modificada_4, label='Seno con cambio de fase')
+plt.plot(t, audio_result_4, label='Seno resultante')
 plt.title('Manipulación de Fase')
 plt.xlabel('Time (s)')
 plt.ylabel('Amplitude')
