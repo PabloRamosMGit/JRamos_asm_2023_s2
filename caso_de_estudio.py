@@ -8,25 +8,24 @@ def generate_sine_wave(frequency, duration, sample_rate):
     signal = np.sin(2 * np.pi * frequency * t)
     return t, signal
 
-# Generar un tono seno a 5 Hz durante 2 segundos
 sample_rate = 44100  # Tasa de muestreo en Hz
 duration = 2  # Duración en segundos
 frequency = 1000  # Frecuencia en Hz
 t, sine_wave = generate_sine_wave(frequency, duration, sample_rate)
 
 # Agregar ruido gaussiano a la señal
-noise = np.random.normal(0, 0.1, len(t))  # Media 0, desviación estándar 0.5
-noisy_signal = sine_wave + noise
+noise = np.random.normal(0, 0.1, len(t))
+noisy_signal = sine_wave + noise #señal con ruido
 
-# Aplicar un filtro pasa-bajos para eliminar el ruido
+# Aplicar un filtro para eliminar el ruido
 cutoff_frequency = 1000  # Frecuencia de corte en Hz
 b, a = signal.butter(4, cutoff_frequency / (sample_rate / 2), 'low')
+#Señal de Reconstruida
 filtered_signal = signal.filtfilt(b, a, noisy_signal)
 
 
 frequencies, times, spectrogram = signal.spectrogram(filtered_signal, fs=sample_rate)
 log_spec = librosa.power_to_db(spectrogram)
-
 plt.pcolormesh(times, frequencies, log_spec, shading='gouraud')
 plt.ylabel('Frequency [Hz]')
 plt.xlabel('Time [sec]')
@@ -43,8 +42,6 @@ plt.xlabel('Time [sec]')
 plt.colorbar()
 plt.title('Espectrograma Señal Original')
 plt.show()
-
-
 
 
 # Graficar las señales

@@ -16,11 +16,11 @@ def reconstruc_signal(freq,sample_rate,duration):
     ruido = np.random.normal(0, 0.1, len(x))
     senal_ruidosa = tono_orignal + ruido
     N = sample_rate * duration
-    yf = rfft(senal_ruidosa)
+    yf = rfft(senal_ruidosa) #Aplicar Fourier
     xf = rfftfreq(N, 1 / sample_rate)
     cutoff_freq = freq
     yf_filtered = yf
-    yf_filtered[xf > cutoff_freq] = 0
+    yf_filtered[xf > cutoff_freq] = 0 #Quitar las frecuencias no deseadas 
 
     signal_filtered = irfft(yf_filtered)
     return senal_ruidosa,signal_filtered

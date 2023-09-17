@@ -8,7 +8,6 @@ fase_requerida = np.pi  # 180 grados o π radianes
 fase_shift = (np.pi/4)
 fase_shift_2 = (np.pi/3)
 fase_shift_3 = (np.pi/4)
-# Generar una señal senoidal de 60 Hz
 duracion = 5.0/frecuencia_original # Duración de la señal en segundos
 sample_rate = 44100  # Tasa de muestreo en Hz
 
